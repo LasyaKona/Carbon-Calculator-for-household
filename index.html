@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EcoTrack - Carbon Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="1M1B2trail.css" />
+</head>
+<body>
+
+  <!-- Welcome Section -->
+  <header id="welcome">
+    <h1>🌱 Welcome to CarbonBuddy</h1>
+    <p>
+      Track your household’s carbon footprint and discover smart, sustainable ways to reduce it.<br />
+      Everything from your power usage to transport and food choices has an impact on our planet.
+    </p>
+    <button id="start-btn">Start My Calculation</button>
+  </header>
+
+  <!-- About Section -->
+  <section class="about" style="display:none;">
+    <h2>🌍 Why Carbon Footprint Matters</h2>
+    <p>
+      A household carbon footprint is the sum of emissions caused by daily life:
+      <br><br>
+      🔌 <strong>Electricity</strong> – Appliances, lighting, and gadgets<br>
+      🚗 <strong>Transport</strong> – Cars, buses, motorcycles, even flights<br>
+      🍽 <strong>Food</strong> – What we eat, especially meat and processed food<br>
+      🔥 <strong>LPG Gas</strong> – Cooking gas used in cylinders for everyday meals<br><br>
+      EcoTrack helps you measure this and gives actionable tips to go greener.
+    </p>
+    <button id="to-calculator-btn">Go to Calculator</button>
+  </section>
+
+  <!-- Calculator Section -->
+  <div class="container" id="calculator" style="display:none;">
+    <h2>📊 Carbon Footprint Calculator</h2>
+    <p>Enter your typical monthly/weekly values:</p>
+
+    <form id="carbon-form">
+      <input type="number" id="electricity" placeholder="Monthly Electricity Use (kWh)" min="0" required />
+      <input type="number" id="driving" placeholder="Weekly Driving Distance (km)" min="0" required />
+      <input type="number" id="gas-cylinders" placeholder="Gas Cylinder Refills per Month" min="0" required />
+      <select id="diet" required>
+        <option value="" disabled selected>Select Diet Type</option>
+        <option value="omnivore">Omnivore</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+      </select>
+      <button type="submit">Calculate</button>
+    </form>
+
+    <div id="results" style="display:none;">
+      <h3>Your Annual Carbon Footprint</h3>
+      <svg id="chart" width="400" height="300"></svg>
+      <div id="tips"></div>
+    </div>
+
+    <button id="toggle-dataset-btn" style="margin-top: 30px;">View Dataset</button>
+
+    <div id="dataset-section" style="display:none; margin-top:20px;">
+      <h3>📋 Household Dataset (Saved Entries)</h3>
+      <table id="dataset-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Electricity (kWh/mo)</th>
+            <th>Driving (km/wk)</th>
+            <th>Gas Cylinders/mo</th>
+            <th>Diet</th>
+            <th>CO₂ Emissions (kg/year)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="1m1b2trail.js"></script>
+</body>
+</html>
